@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "Bukhari";
+    src: url(../font/Bukhari\ Script.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 500;
+}
+
+:root {
+    --blanco: #f6f3e4;
+    --lila: #e5bffc;
+    --rosado: #ffe0eb;
+    --rosadoOscuro: #eaa2cb;
+    --rosaViejo: #c6527b;
+}
+
+/* TIPO DE FUENTE */
+.bukhari {
+    font-family: "Bukhari";
+}
+
+.titulo {
+    font-size: 2rem;
+}
+
+/* COLORES DE FONDO */
+.bg-blanco {
+    background-color: var(--blanco);
+}
+.bg-lila {
+    background-color: var(--lila);
+}
+.bg-rosado {
+    background-color: var(--rosado);
+}
+.bg-rosadoOscuro {
+    background-color: var(--rosadoOscuro);
+}
+.bg-rosaViejo {
+    background-color: var(--rosaViejo);
+}
+
+/* COLORES DE TEXTO */
+.texto-blanco {
+    color: var(--blanco);
+}
+.texto-lila {
+    color: var(--lila);
+}
+.texto-rosado {
+    color: var(--rosado);
+}
+.texto-rosadoOscuro {
+    color: var(--rosadoOscuro);
+}
+.texto-rosaViejo {
+    color: var(--rosaViejo);
+}
+
+.titulo {
+    font-size: 5rem;
+}
+
+.imagen {
+    height: 100px;
+}
