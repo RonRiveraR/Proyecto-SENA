@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
 
             $table->string('nombre', 100);
-            $table->string('talla', 2);
-            $table->unsignedInteger('cantidad');
             $table->string('color', 50);
             $table->string('tipoDeTela', 50)->nullable();
             $table->string('descripcion', 200)->nullable();

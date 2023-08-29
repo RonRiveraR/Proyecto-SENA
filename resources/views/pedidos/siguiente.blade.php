@@ -7,6 +7,7 @@
     <form class="col-7" action="{{ url('pedidos/reg/cli') }}" method="post">
         @csrf
 
+
         <div class="container px-5 mt-3">
             <select class="form-select" aria-label="Default select" id="producto_id" name="producto_id" required>
                 <option selected>Selecciona un producto de la lista</option>
@@ -18,6 +19,7 @@
                 @endforeach
                 @endif
             </select>
+
         </div>
 
 
@@ -41,10 +43,13 @@
         </div>
 
 
-        <input type="hidden" name="numeroDeOrden" value="{{ $random }}">
-        <input type="hidden" name="cliente_id" value="{{ $cliente->id }}">
+        <input type="hidden" name="numeroDeOrden" value="{{ $numOrden }}">
+        <input type="hidden" name="cliente_id" value="{{ $id }}">
 
         <div class="container-row d-flex justify-content-end">
+            <div class="pe-3">
+                <a href="{{ url('pedidos') }}" class="btn bg-secondary text-light">Salir</a>
+            </div>
             <div class="ps-3">
                 <input type="submit" class="btn btn-danger bg-rosaViejo text-light" value="Siguiente prenda">
             </div>

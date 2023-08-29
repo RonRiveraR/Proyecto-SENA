@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedInteger('cantidad');
-            $table->unsignedInteger('producto');
+            $table->string('talla', 2);
             $table->enum('estado', ['pendiente', 'realizado'])->default('pendiente');
+            $table->string('numeroDeOrden', 100);
             $table->unsignedBigInteger('cliente_id');
             $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade');
+            $table->unsignedInteger('producto_id');
+            $table->foreign('producto_id')->references('id')->on('producto')->onDelete('cascade');
 
             $table->timestamps();
         });

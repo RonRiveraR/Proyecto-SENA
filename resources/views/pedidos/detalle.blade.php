@@ -1,9 +1,18 @@
 @extends('layouts.layout')
 
+@section('cabecera')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+@stop
+
 @section('contenido')
 
 <div class="container">
-  <div class="row ">
+  <div class="row">
+    <?php $comparador = 0 ?>
+    @foreach($data as $row)
+    @if( $row->cliente->cedula != $comparador)
     <div class="col-6 text-end">
       <p><b>Nombre</b></p>
       <p><b>Documento de identtidad</b></p>
@@ -11,80 +20,58 @@
       <p><b>Direccion</b></p>
     </div>
     <div class="col-6">
-      <p>Maria Martines</p>
-      <p>10.455.455</p>
-      <p>3004553355</p>
-      <p>Av. Raul Casa 15 MRW Barinas</p>
+      <p>{{ $row->cliente->nombre }}</p>
+      <p>{{ $row->cliente->cedula }}</p>
+      @if($row->cliente->telefono != null)
+      <p>{{ $row->cliente->telefono }}</p>
+      @else
+      <p>-</p>
+      @endif
+      @if($row->cliente->direccion != null)
+      <p>{{ $row->cliente->direccion }}</p>
+      @else
+      <p>-</p>
+      @endif
+
     </div>
+    <?php $comparador = $row->cliente->cedula ?>
+    @endif
+    @endforeach
   </div>
 </div>
 
-<div class="container px-5">
-  <table class="table px-5">
+<div class="container px-5 mb-5">
+  <table class="table px-5" id="tabla">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Prenda</th>
+        <th scope="col">Cantidad</th>
         <th scope="col">Talla</th>
-        <th scope="col">Listo</th>
       </tr>
     </thead>
     <tbody>
+      @foreach( $data as $row )
       <tr>
-        <th scope="row">1</th>
-        <td>Body Halter Amarillo</td>
-        <td>S</td>
-        <td>
-          <select class="form-select" aria-label="Default select example" style="width: min-content;">
-            <option selected value="1">No</option>
-            <option value="2">Si</option>
-          </select>
-        </td>
+        <td>{{$row->producto->nombre}}</td>
+        <td>{{$row->cantidad}}</td>
+        <td>{{$row->talla}}</td>
       </tr>
-      <tr class="texto-rosado">
-        <th scope="row">2</th>
-        <td>Body Sofia Rojo</td>
-        <td>S</td>
-        <td>
-          <select class="form-select" aria-label="Default select example" style="width: min-content;">
-            <option value="1">No</option>
-            <option selected value="2">Si</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Body Sofia Rojo</td>
-        <td>S</td>
-        <td>
-          <select class="form-select" aria-label="Default select example" style="width: min-content;">
-            <option selected value="1">No</option>
-            <option value="2">Si</option>
-          </select>
-        </td>
-      </tr>
+      @endforeach
     </tbody>
   </table>
 </div>
 
-<div class="container px-5">
-  <div class="row">
-    <div class="col-3">
-      <label for="">Estado</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected value="pendiente">Pendiente</option>
-        <option value="listo">Listo</option>
-      </select>
-    </div>
-    <div class="col-3"></div>
-    <div class="col-3">
-      <button class="btn bg-secondary">Volver</button>
-    </div>
-    <div class="col-3">
-      <button class="btn bg-rosaViejo text-light">Actualizar</button>
-    </div>
-  </div>
-</div>
+@stop
 
-
+@section('script')
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script>
+  let table = new DataTable('#tabla', {
+    responsive: true,
+    language: {
+      url: "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-MX.json",
+    }
+  });
+</script>
 @stop

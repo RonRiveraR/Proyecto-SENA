@@ -10,19 +10,21 @@ class Pedido extends Model
 {
     protected $fillable = [
         'cantidad',
+        'talla',
         'producto',
         'estado',
+        'numeroDeOrden',
+        'producto_id',
         'cliente_id',
     ];
 
-    public function productos()
+    public function cliente(): BelongsTo
     {
-        return $this->belongsToMany(Producto::class, 'pedido_producto');
+        return $this->belongsTo('App\Models\Cliente');
     }
-
-    public function clientes(): BelongsTo
+    public function producto(): BelongsTo
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo('App\Models\Producto');
     }
 
     use HasFactory;

@@ -35,22 +35,39 @@ require __DIR__ . '/auth.php';
 
 
 Route::controller(VistaController::class)->group(function () {
+    /* INICIO */
     Route::get('inicio', 'inicio');
 
+    /* PEDIDOS */
     Route::get('pedidos', 'pedidos');
-    Route::get('pedidos/registrar', 'registrarPedidos');
-    Route::get('pedidos/registrar/prenda', 'registrarPedidosPrenda');
+    Route::get('pedidos/registrar', 'pedidosRegistrar');
+    Route::post('pedido/reg/cli', 'registrarClientePorPedido');
+    Route::post('pedidos/reg/cli', 'registrarPedido');
+    Route::get('pedidos/clientes', 'listaClientes');
 
+    /* PEDIDOS, CRUD */
+    Route::delete('pedidos/{dato}/eliminar', 'pedidoEliminar');
+    //Route::get('pedidos/{dato}/editar', 'pedidoAEditar');
+    Route::get('pedidos/{dato}/detalle', 'pedidoDetalle');
+    Route::put('pedidos/{dato}/cambiar', 'pedidoEditarEstado');
+    Route::put('pedidos/{dato}/cambiarPendiente', 'pedidoEditarEstadoAPendiente');
 
+    /* CLIENTES */
     Route::get('clientes', 'clientes');
     Route::get('clientes/nuevo', 'clientesNuevo');
-    //Route::get('clientes/editar/{$id}', 'clientesEditar');
+    Route::post('clientes/nuevo/guardar', 'clientesRegistrar');
+    Route::get('clientes/{id}/editar', 'clientesAEditar');
+    Route::put('clientes/editar/{id}', 'clientesEditar');
+    Route::delete('clientes/{id}/eliminar', 'clientesEliminar');
 
-
-    Route::get('productos', 'productos');
+    /* PRODUCTOS */
+    Route::get('productos', 'productos')->name('productos');
     Route::get('productos/nuevo', 'productosNuevo');
-    //Route::get('productos/editar/{$id}', 'productosEditar');
+    Route::post('productos/nuevo/guardar', 'productosRegistrar');
+    Route::get('productos/{id}/editar', 'productosAEditar');
+    Route::put('productos/editar/{id}', 'productosEditar');
+    Route::delete('productos/{id}/eliminar', 'productosEliminar');
 
-    Route::get('movimientos', 'movimientos');
+    //Route::get('movimientos', 'movimientos');
     //Route::get('movimientos/editar/{$id}', 'movimientosEditar');
 });
