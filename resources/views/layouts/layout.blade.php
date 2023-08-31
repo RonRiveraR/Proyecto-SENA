@@ -7,6 +7,7 @@
     <title>Placard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('img/LogoMinimal.png') }}">
     @yield('cabecera')
 </head>
 
@@ -33,15 +34,22 @@
                     <li class="nav-item">
                         <a class="nav-link texto-rosaViejo" aria-current="page" href="{{ url('productos') }}">Productos</a>
                     </li>
-                    <!--                     <li class="nav-item">
-                        <a class="nav-link texto-rosaViejo" aria-current="page" href="{{ url('movimientos') }}">Movimientos</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="nav-link texto-rosaViejo" href="{{route('logout')}}" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                {{ __('Cerrar Sesión') }}
+                            </a>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <div class=" container">
         <h1 class="text-center texto-rosaViejo bukhari titulo my-5">Placard</h1>
     </div>
 

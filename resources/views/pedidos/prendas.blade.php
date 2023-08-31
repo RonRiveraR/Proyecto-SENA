@@ -9,7 +9,7 @@
 
         <div class="container px-5 mt-3">
             <select class="form-select" aria-label="Default select" id="producto_id" name="producto_id" required>
-                <option selected>Selecciona un producto de la lista</option>
+                <option value="">Selecciona un producto de la lista</option>
                 @if(!isset($producto[0]))
                 <option>Ningún cliente registado.</option>
                 @else
@@ -29,7 +29,7 @@
             </div>
             <div class="my-3 col-6 ps-3">
                 <select class="form-select" aria-label="Default select" id="talla" name="talla" required>
-                    <option selected>Talla</option>
+                    <option value="">Talla</option>
                     <option value="xs">XS</option>
                     <option value="s">S</option>
                     <option value="m">M</option>
@@ -52,4 +52,29 @@
 
     </form>
 </div>
+@stop
+
+
+@section('script')
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script>
+    $("#formulario").validate({
+        rules: {
+            cantidad: {
+                required: true,
+                number: true,
+            },
+        },
+        messages: {
+            cantidad: {
+                required: "Debes ingresar una cantidad",
+                number: "Debe ser un número"
+            },
+        },
+        errorElement: 'span'
+    });
+</script>
+
+
+
 @stop

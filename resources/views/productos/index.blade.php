@@ -21,7 +21,7 @@
     </div>
 </div>
 @else
-<div class="container px-5">
+<div class="container px-5 mb-5">
     <table class="table px-5" id="tabla">
         <thead>
             <tr>

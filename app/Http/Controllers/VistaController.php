@@ -7,6 +7,7 @@ use App\Models\Pedido;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\FuncCall;
 
 class VistaController extends Controller
 {
@@ -44,7 +45,6 @@ class VistaController extends Controller
         Cliente::create($data);
 
         $cliente = Cliente::where('nombre', $nombre)->first();
-        //$cliente = DB::table('clientes')->where('nombre', '=', $nombre)->get();
         $producto = Producto::all();
 
         $random = $request->get('random');
@@ -65,7 +65,19 @@ class VistaController extends Controller
     public function listaClientes()
     {
         $data = Cliente::all();
-        return view('pedidos.lista', compact('data'));
+        $order = rand(1000000000000, 9999999999999);
+        return view('pedidos.lista', compact('data', 'order'));
+    }
+
+    public function pedidoEnClienteRegistrado(Request $request)
+    {
+        $nombre = $request->get('cliente');
+        $cliente = Cliente::where('nombre', $nombre)->first();
+        $producto = Producto::all();
+
+        $random = $request->get('random');
+
+        return view('pedidos.prendas', compact('random', 'cliente', 'producto'));
     }
 
     //----------------------------------------------PEDIDOS, CRUD

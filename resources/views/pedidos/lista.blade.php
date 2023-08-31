@@ -9,11 +9,12 @@
 
 <h3 class="text-center mb-5">Elegir cliente</h3>
 
-<form action="">
+<form action="{{ url('pedido/clienteRegistrado') }}" method="post">
+  @csrf
   <div class="container px-5">
     <div class="container px-5">
       <select class="form-select" aria-label="Default select" id="cliente" name="cliente" required>
-        <option selected>Selecciona un cliente de la lista</option>
+        <option value="" selected>Selecciona un cliente de la lista</option>
         @if(!isset($data[0]))
         <option>Ningún cliente registado.</option>
         @else
@@ -22,6 +23,7 @@
         @endforeach
         @endif
       </select>
+      <input type="hidden" name="random" value="{{ $order }}">
       <div class="container-row d-flex justify-content-end mt-5 mb-5">
         <div class="pe-3">
           <a href="{{ url('pedidos') }}" class="btn bg-secondary text-light">Volver</a>
