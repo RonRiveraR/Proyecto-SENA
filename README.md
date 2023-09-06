@@ -9,7 +9,7 @@
 
 ## Acerca del Proyecto SENA
 
-Este es el desarrollo de nuestro proyecto SENA, donde los integrantes somos: Ronald Rivera, Pedro Viloria y Jennifer Roa.
+Este es el desarrollo de nuestro proyecto SENA, donde los integrantes somos: Ronald Rivera y Angela Sofia Malagón.
 
 ## About Laravel
 
