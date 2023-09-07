@@ -4,13 +4,12 @@
 <h3 class="text-center">Registrar prendas del pedido</h3>
 
 <div class="container d-flex justify-content-center">
-    <form class="col-7" action="{{ url('pedidos/reg/cli') }}" method="post">
+    <form class="col-7" action="{{ url('pedidos/reg/cli') }}" method="post" id="formulario">
         @csrf
-
 
         <div class="container px-5 mt-3">
             <select class="form-select" aria-label="Default select" id="producto_id" name="producto_id" required>
-                <option selected>Selecciona un producto de la lista</option>
+                <option value="">Selecciona un producto de la lista</option>
                 @if(!isset($producto[0]))
                 <option>Ningún cliente registado.</option>
                 @else
@@ -19,7 +18,6 @@
                 @endforeach
                 @endif
             </select>
-
         </div>
 
 
@@ -31,7 +29,7 @@
             </div>
             <div class="my-3 col-6 ps-3">
                 <select class="form-select" aria-label="Default select" id="talla" name="talla" required>
-                    <option selected>Talla</option>
+                    <option value="">Talla</option>
                     <option value="xs">XS</option>
                     <option value="s">S</option>
                     <option value="m">M</option>
@@ -57,4 +55,40 @@
 
     </form>
 </div>
+@stop
+
+@section('script')
+<script src="{{ asset('js/jquery.validate.min.js') }}"></script>
+<script>
+    $("#formulario").validate({
+        rules: {
+            cantidad: {
+                required: true,
+                number: true,
+            },
+            producto_id: {
+                required: true,
+            },
+            talla: {
+                required: true,
+            },
+        },
+        messages: {
+            cantidad: {
+                required: "Debes ingresar una cantidad",
+                number: "Debe ser un número"
+            },
+            producto_id: {
+                required: "Debes seleccionar una prenda de la lista",
+            },
+            talla: {
+                required: "Debes seleccionar una talla de la lista",
+            },
+        },
+        errorElement: 'span'
+    });
+</script>
+
+
+
 @stop

@@ -94,7 +94,7 @@
                 required: "Debes seleccionar una talla",
                 maxlength: "Debe ser menos de 240 carácteres"
             },
-            tipo: {
+            tipoDeTela: {
                 required: "Debes seleccionar tipo de tela",
                 maxlength: "Debe ser menos de 240 carácteres"
             },

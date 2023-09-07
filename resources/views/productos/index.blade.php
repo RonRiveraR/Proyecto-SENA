@@ -27,8 +27,6 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Talla</th>
-                <th scope="col">Cantidad</th>
                 <th scope="col">Color</th>
                 <th scope="col">Tipo de tela</th>
                 <th scope="col">Descripción</th>
@@ -41,8 +39,6 @@
             <tr>
                 <th scope="row">{{ $row->id }}</th>
                 <td class="text-capitalize">{{ $row->nombre }}</td>
-                <td class="text-uppercase">{{ $row->talla }}</td>
-                <td class="text-capitalize">{{ $row->cantidad }}</td>
                 <td class="text-capitalize">{{ $row->color }}</td>
                 @if($row->tipoDeTela==null)
                 <td>-</td>

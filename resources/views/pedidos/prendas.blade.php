@@ -4,7 +4,7 @@
 <h3 class="text-center">Registrar prendas del pedido</h3>
 
 <div class="container d-flex justify-content-center">
-    <form class="col-7" action="{{ url('pedidos/reg/cli') }}" method="post">
+    <form class="col-7" action="{{ url('pedidos/reg/cli') }}" method="post" id="formulario">
         @csrf
 
         <div class="container px-5 mt-3">
@@ -64,11 +64,23 @@
                 required: true,
                 number: true,
             },
+            producto_id: {
+                required: true,
+            },
+            talla: {
+                required: true,
+            },
         },
         messages: {
             cantidad: {
                 required: "Debes ingresar una cantidad",
                 number: "Debe ser un número"
+            },
+            producto_id: {
+                required: "Debes seleccionar una prenda de la lista",
+            },
+            talla: {
+                required: "Debes seleccionar una talla de la lista",
             },
         },
         errorElement: 'span'

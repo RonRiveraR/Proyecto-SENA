@@ -3,7 +3,7 @@
 @section('contenido')
 <h3 class="text-center">Registrar nuevo cliente</h3>
 
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center mb-5">
     <form class="col-7" action="{{ url('clientes/nuevo/guardar') }}" method="post" id="formulario">
         @csrf
         <div class="my-3">
